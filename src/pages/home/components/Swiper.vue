@@ -1,14 +1,17 @@
 <template>
 <div class="wrapper">
-  <swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide v-for="item in swiperList" :key="item.id">
-        <img :src="item.imgUrl" class="swiper-img"/>
-    </swiper-slide>
-    <div class="swiper-pagination" slot="pagination"></div>
+  <swiper :options="swiperOptions">
+    <template #default>
+      <swiper-slide v-for="item in swiperList" :key="item.id">
+          <img :src="item.imgUrl" class="swiper-img"/>
+      </swiper-slide>
+    </template>
+    <template #pagination>
+      <div class="swiper-pagination"></div>
+    </template>
   </swiper>
 </div>
 </template>
-
 <script>
 export default {
   name: 'HomeSwiper',
@@ -25,7 +28,7 @@ export default {
         paginationClickable: true,
         mousewheelControl: true,
         observeParents: true,
-        loop:true
+        loop: true
       },
       swiperList: [{
         id: '001',
