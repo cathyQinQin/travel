@@ -14,12 +14,14 @@ export default {
 <style lang="stylus" scoped>
     @import '~styles/variables.styl'
     .header
+        background $bgColor
         position relative
         display inline-block
         width 100%
         line-height $headerHeight
         height $headerHeight
         text-align center
+        color #fff
         .header-back
             position absolute
             top 0
