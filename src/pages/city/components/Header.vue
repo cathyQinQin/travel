@@ -8,8 +8,8 @@
 </template>
 <script>
 export default {
-  name: 'CityHeader'
-}
+  name: 'CityHeader',
+};
 </script>
 <style lang="stylus" scoped>
     @import '~styles/variables.styl'

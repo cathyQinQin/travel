@@ -24,7 +24,9 @@
             :ref="key">
             <div class="title border-topbottom">{{key}}
                 <div class="item-list">
-                    <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{innerItem.spell}}</div>
+                    <div class="item border-bottom"
+                    v-for="innerItem of item"
+                    :key="innerItem.id">{{innerItem.spell}}</div>
                 </div>
             </div>
         </div>
@@ -32,26 +34,27 @@
     </div>
 </template>
 <script>
-import Bscroll from 'better-scroll'
+import Bscroll from 'better-scroll';
+
 export default {
   name: 'CityList',
   props: {
     cities: Object,
     hotCities: Array,
-    letter: String
+    letter: String,
   },
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+  mounted() {
+    this.scroll = new Bscroll(this.$refs.wrapper);
   },
   watch: {
-    letter () {
+    letter() {
       if (this.letter) {
-        const element = this.$refs[this.letter][0]
-        this.scroll.scrollToElement(element)
+        const element = this.$refs[this.letter][0];
+        this.scroll.scrollToElement(element);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="stylus" scoped>
     @import '~styles/variables.styl'

@@ -1,5 +1,5 @@
 <template>
-    <ul class="list">
+    <ul class="list" ref="list">
         <li class="item"
             v-for="item of letters"
             :key="item"
@@ -27,6 +27,8 @@ export default {
   },
   updated() {
     this.startY = this.$refs.A[0].offsetTop;
+    this.offsetY = this.$refs.list.offsetTop;
+    this.rowHeight = this.$refs.A[0].clientHeight;
   },
   computed: {
     letters() {
@@ -38,8 +40,8 @@ export default {
       this.$emit('change', e.target.innerText);
     },
     handleTouchMove: throttle(function f(e) {
-      const touchY = e.touches[0].clientY - 79;
-      const index = Math.floor((touchY - this.startY) / 20);
+      const touchY = e.touches[0].clientY - this.offsetY;
+      const index = Math.floor((touchY - this.startY) / this.rowHeight);
       if (index >= 0 && index < this.letters.length) {
         this.$emit('change', this.letters[index]);
       }
