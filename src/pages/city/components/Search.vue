@@ -11,7 +11,8 @@
             <ul>
                 <li class="search-item border-bottom"
                 v-for="item of list"
-                :key="item.id">{{item.spell}}</li>
+                :key="item.id"
+                @click="handleCityClick(item.spell)">{{item.spell}}</li>
                 <li class="search-item border-bottom" v-show="hasNoData">
                     No Result Found
                 </li>
@@ -22,6 +23,7 @@
 <script>
 import { keys } from 'lodash';
 import Bscroll from 'better-scroll';
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'CitySearch',
@@ -42,6 +44,13 @@ export default {
     hasNoData() {
       return !this.list.length;
     },
+  },
+  methods: {
+    handleCityClick(city) {
+      this.$store.dispatch('changeCity', city);
+      this.$router.push('/');
+    },
+    ...mapMutations(['changeCity']),
   },
   mounted() {
     this.scroll = new Bscroll(this.$refs.search);
