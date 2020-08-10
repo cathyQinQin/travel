@@ -38,7 +38,6 @@ export default {
       if (data && data.ret) {
         this.cities = data.data.cities;
         this.hotCities = data.data.hotCities;
-        console.log(this.cities);
       }
     },
     handleLetterChange(letter) {
