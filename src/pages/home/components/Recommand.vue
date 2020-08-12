@@ -2,14 +2,19 @@
     <div>
          <div class="title">Hot Recommand</div>
         <ul>
-            <li v-for="item of list" class="item border-bottom" :key="item.id">
+            <router-link
+                :to="`/detail/${item.id}`"
+                tag="li"
+                v-for="item of list"
+                class="item border-bottom"
+                :key="item.id">
                 <img class="item-img" :src="item.imgUrl"/>
                 <div class="item-info">
                     <p class="item-title">{{item.title}}</p>
                     <p class="item-desc">{{item.desc}}</p>
                     <button class="item-button">More Details</button>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div>
 </template>

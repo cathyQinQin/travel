@@ -3,7 +3,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
-import 'swiper/swiper-bundle.css';
+import 'swiper/css/swiper.css';
 import App from './App.vue';
 import router from './router';
 import 'styles/reset.css';

@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper">
-  <swiper :options="swiperOptions" v-if="showSwiper">
+  <swiper ref="mySwiper" :options="swiperOptions" v-if="showSwiper">
     <template #default>
       <swiper-slide v-for="item of list" :key="item.id">
           <img :src="item.imgUrl" class="swiper-img"/>
@@ -21,22 +21,22 @@ export default {
   data() {
     return {
       swiperOptions: {
-        // swiper configs 所有的配置同swiper官方api配置
-        autoplay: 3000,
-        direction: 'horizontal',
-        grabCursor: true,
-        setWrapperSize: true,
-        autoHeight: true,
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        mousewheelControl: true,
-        observeParents: true,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        autoplay: true,
+        speed: 1000,
       },
     };
   },
   computed: {
     showSwiper() {
       return this.list.length;
+    },
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper;
+      },
     },
   },
 };
