@@ -6,7 +6,7 @@
                 :to="`/detail/${item.id}`"
                 tag="li"
                 v-for="item of list"
-                class="item border-bottom"
+                class="item"
                 :key="item.id">
                 <img class="item-img" :src="item.imgUrl"/>
                 <div class="item-info">
@@ -33,6 +33,7 @@ export default {
         background #eee
         text-indent .2rem
     .item
+        borderBottom()
         display flex
         height 1.9rem
         overflow hidden
