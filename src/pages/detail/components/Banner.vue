@@ -17,7 +17,7 @@
 import CommonGallery from 'common/gallery/Gallery.vue';
 
 export default {
-  name: 'Banner',
+  name: 'DetailBanner',
   data() {
     return {
       imgs: ['https://lh3.googleusercontent.com/proxy/SaH2R9H8dQoYLpwLowIFh9KLmVdjRU9CafQQG_WKYyjHXAeUxCthpePwXO6zf1Svn9LkgGEsihKBJPlp92vl8STNsVxEbKy4pbXlV4PGqgaQwMD2AK9qoex2-24'],
