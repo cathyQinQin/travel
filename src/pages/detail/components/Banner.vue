@@ -1,16 +1,20 @@
 <template>
 <div>
     <div class="banner" @click="handleBannerClick">
-        <img class="banner-img" src="https://images.theconversation.com/files/319375/original/file-20200309-118956-1cqvm6j.jpg?ixlib=rb-1.1.0&rect=17%2C0%2C5964%2C2982&q=45&auto=format&w=1356&h=668&fit=crop"/>
+        <img class="banner-img" :src="bannerImg"/>
         <div class="banner-info">
-          <div class="banner-title">大连海洋世界</div>
+          <div class="banner-title">{{sightName}}</div>
           <div class="banner-number">
             <span class="iconfont banner-icon">&#xe64b;</span>
             32
           </div>
         </div>
     </div>
-    <common-gallery :imgs="imgs" v-show="showGallery" @close="handleGalleryClose"></common-gallery>
+    <common-gallery
+    :imgs="gallaryImgs"
+    v-show="showGallery"
+    @close="handleGalleryClose"
+    ></common-gallery>
 </div>
 </template>
 <script>
@@ -18,9 +22,13 @@ import CommonGallery from 'common/gallery/Gallery.vue';
 
 export default {
   name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array,
+  },
   data() {
     return {
-      imgs: ['https://lh3.googleusercontent.com/proxy/SaH2R9H8dQoYLpwLowIFh9KLmVdjRU9CafQQG_WKYyjHXAeUxCthpePwXO6zf1Svn9LkgGEsihKBJPlp92vl8STNsVxEbKy4pbXlV4PGqgaQwMD2AK9qoex2-24'],
       showGallery: false,
     };
   },

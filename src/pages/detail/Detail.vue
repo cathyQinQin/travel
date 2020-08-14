@@ -1,6 +1,10 @@
 <template>
     <div>
-      <detail-banner></detail-banner>
+      <detail-banner
+      :sightName="sightName"
+      :bannerImg ="bannerImg"
+      :gallaryImgs ="gallaryImgs"
+      ></detail-banner>
       <detail-header></detail-header>
       <div class="content">
         <detail-List :list="list"></detail-List>
@@ -8,6 +12,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 import DetailBanner from './components/Banner.vue';
 import DetailHeader from './components/Header.vue';
 import DetailList from './components/List.vue';
@@ -16,21 +21,36 @@ export default {
   name: 'Detail',
   data() {
     return {
-      list: [
-        {
-          title: 'student price',
-          children: [{
-            title: 'student price',
-          }],
-        },
-        {
-          title: 'adult price',
-        },
-        {
-          title: 'children price',
-        },
-      ],
+      sightName: '',
+      bannerImg: '',
+      gallaryImgs: [],
+      list: [],
     };
+  },
+  methods: {
+    getDetailInfo() {
+      axios.get('api/detail.json', {
+        params: {
+          id: this.$route.params.id,
+        },
+      }).then(this.handleGetDataSucc);
+    },
+    handleGetDataSucc(res) {
+      const { data } = res;
+      if (data.ret && data.data) {
+        const info = data.data;
+        this.sightName = info.sightName;
+        this.bannerImg = info.bannerImg;
+        this.gallaryImgs = info.gallaryImgs;
+        this.list = info.categoryList;
+      }
+    },
+  },
+  mounted() {
+    this.getDetailInfo();
+  },
+  activated() {
+    this.getDetailInfo();
   },
   components: {
     DetailBanner,

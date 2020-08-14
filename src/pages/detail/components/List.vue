@@ -17,8 +17,6 @@ export default {
   props: {
     list: Array,
   },
-  data() {
-  },
 };
 </script>
 <style lang="stylus" scoped>
