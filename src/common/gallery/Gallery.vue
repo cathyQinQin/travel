@@ -65,7 +65,6 @@ export default {
     height: 0
     padding-bottom 100%
     .gallery-img
-      margin-top 1.5rem
       width: 100%
     .swiper-pagination
       color #fff

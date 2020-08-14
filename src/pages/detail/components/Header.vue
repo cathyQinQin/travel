@@ -31,7 +31,8 @@ export default {
       this.showGallery = false;
     },
     handleScroll() {
-      const top = document.documentElement.scrollTop;
+      const top = document.documentElement.scrollTop
+      || document.body.scrollTop || window.pageYOffset;
       if (top > 60) {
         const opacity = top / 140 > 1 ? 1 : top / 140;
         this.opacityStyle = { opacity };
